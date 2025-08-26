@@ -1,0 +1,973 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://www.semanticweb.org/dega/ontologies/2020/10/auv_ontology"
+         xmlns="http://www.semanticweb.org/dega/ontologies/2020/10/auv_ontology#">
+
+<owl:Ontology rdf:about="http://www.semanticweb.org/dega/ontologies/2020/10/auv_ontology">
+  <rdfs:comment>This ontology describes an Autonomous Underwater Vehicle's relation with its hardware and mission objectives.</rdfs:comment>
+</owl:Ontology>
+
+<owl:ObjectProperty rdf:about="#IsEquippedForTaskWith">
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="#Equipment"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#approachesTargetAt">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="#Waypoint"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#correctsPositionAt">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="#Waypoint"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasApproached">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="#Waypoint"/>
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasDistanceFrom">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Waypoint"/>
+  <rdfs:range rdf:resource="#Waypoint"/>
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasStructureCentre">
+  <rdfs:domain rdf:resource="#Waypoint"/>
+  <rdfs:range>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#is_a_structure_centre"/>
+      <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+    </owl:Restriction>
+  </rdfs:range>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#hasValve">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Waypoint"/>
+  <rdfs:range rdf:resource="#Valve"/>
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#identifiesStructureAt">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="#Waypoint"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#inspectsRocksAt">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="#Waypoint"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#inspectsSoilAt">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="#Waypoint"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#inspectsStructureAt">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="#Waypoint"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isCloseForInspectionTo">
+  <rdfs:domain rdf:resource="#Waypoint"/>
+  <rdfs:range rdf:resource="#Waypoint"/>
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isEquippedForCADClassificationWith">
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="#CADClassification"/>
+  <rdfs:subPropertyOf rdf:resource="#IsEquippedForTaskWith"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isEquippedForCameraImagingWith">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="#Camera"/>
+  <rdfs:subPropertyOf rdf:resource="#IsEquippedForTaskWith"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isEquippedForRockAnalysisWith">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="#RockSensor"/>
+  <rdfs:subPropertyOf rdf:resource="#IsEquippedForTaskWith"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isEquippedForSoilAnalysisWith">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="#SoilSensor"/>
+  <rdfs:subPropertyOf rdf:resource="#IsEquippedForTaskWith"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isEquippedForSonarImagingWith">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="#Sonar"/>
+  <rdfs:subPropertyOf rdf:resource="#IsEquippedForTaskWith"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isEquippedForValveTurningWith">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="#RobotActuator"/>
+  <rdfs:subPropertyOf rdf:resource="#IsEquippedForTaskWith"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isLocatedAt">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="#Waypoint"/>
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#isNearTo">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="#Waypoint"/>
+  <rdfs:subPropertyOf rdf:resource="http://www.w3.org/2002/07/owl#topObjectProperty"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#manipulatesAt">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="#Waypoint"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#navigatesTo">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="#Waypoint"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#performsStructureMaintainanceAt">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="#Waypoint"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#robustlyInspectsStructureAt">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="#Waypoint"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#sensesValveAt">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="#Waypoint"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#takesImageAt">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:range rdf:resource="#Waypoint"/>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#turnsValveAt">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="#Waypoint"/>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#is_a_structure_centre">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Waypoint"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdfs:subPropertyOf rdf:resource="#waypoint_properties"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#waypoint_properties"/>
+
+<owl:DatatypeProperty rdf:about="#available">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdfs:subPropertyOf rdf:resource="#robot_properties"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#robot_properties"/>
+
+<owl:DatatypeProperty rdf:about="#circle_perimeter">
+  <rdfs:subPropertyOf rdf:resource="#mission_info"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#mission_info"/>
+
+<owl:DatatypeProperty rdf:about="#data_adquired">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdfs:subPropertyOf rdf:resource="#robot_properties"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#data_capacity">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdfs:subPropertyOf rdf:resource="#robot_properties"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#energy">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdfs:subPropertyOf rdf:resource="#robot_properties"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#explored">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Waypoint"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdfs:subPropertyOf rdf:resource="#waypoint_properties"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#inspected">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Waypoint"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdfs:subPropertyOf rdf:resource="#waypoint_properties"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#poi_image_taken">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Waypoint"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdfs:subPropertyOf rdf:resource="#waypoint_properties"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#poi_maintenance_required">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Waypoint"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdfs:subPropertyOf rdf:resource="#waypoint_properties"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#poi_rock_analysis">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Waypoint"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdfs:subPropertyOf rdf:resource="#waypoint_properties"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#poi_soil_analysis">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Waypoint"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdfs:subPropertyOf rdf:resource="#waypoint_properties"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#poi_structure_id">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Waypoint"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdfs:subPropertyOf rdf:resource="#waypoint_properties"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#poi_target_inquired">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Waypoint"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdfs:subPropertyOf rdf:resource="#waypoint_properties"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#poi_valve_turned">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Waypoint"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdfs:subPropertyOf rdf:resource="#waypoint_properties"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#section_restored">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Waypoint"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdfs:subPropertyOf rdf:resource="#waypoint_properties"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#section_welded">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Waypoint"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdfs:subPropertyOf rdf:resource="#waypoint_properties"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#speed">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Robot"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdfs:subPropertyOf rdf:resource="#robot_properties"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#structure_inspected">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Waypoint"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdfs:subPropertyOf rdf:resource="#waypoint_properties"/>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#total_distance">
+  <rdfs:subPropertyOf rdf:resource="#mission_info"/>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#Robot">
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#available"/>
+      <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#data_adquired"/>
+      <owl:someValuesFrom>
+        <rdfs:Datatype>
+          <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+          <owl:withRestrictions>
+            <rdf:Description>
+              <rdf:first>
+                <rdf:Description>
+                  <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</xsd:minInclusive>
+                </rdf:Description>
+              </rdf:first>
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+          </owl:withRestrictions>
+        </rdfs:Datatype>
+      </owl:someValuesFrom>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#data_capacity"/>
+      <owl:someValuesFrom>
+        <rdfs:Datatype>
+          <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+          <owl:withRestrictions>
+            <rdf:Description>
+              <rdf:first>
+                <rdf:Description>
+                  <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</xsd:minInclusive>
+                </rdf:Description>
+              </rdf:first>
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+          </owl:withRestrictions>
+        </rdfs:Datatype>
+      </owl:someValuesFrom>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#energy"/>
+      <owl:someValuesFrom>
+        <rdfs:Datatype>
+          <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+          <owl:withRestrictions>
+            <rdf:Description>
+              <rdf:first>
+                <rdf:Description>
+                  <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</xsd:minInclusive>
+                </rdf:Description>
+              </rdf:first>
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+          </owl:withRestrictions>
+        </rdfs:Datatype>
+      </owl:someValuesFrom>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:subClassOf>
+    <owl:Restriction>
+      <owl:onProperty rdf:resource="#speed"/>
+      <owl:someValuesFrom>
+        <rdfs:Datatype>
+          <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+          <owl:withRestrictions>
+            <rdf:Description>
+              <rdf:first>
+                <rdf:Description>
+                  <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</xsd:minInclusive>
+                </rdf:Description>
+              </rdf:first>
+              <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+            </rdf:Description>
+          </owl:withRestrictions>
+        </rdfs:Datatype>
+      </owl:someValuesFrom>
+    </owl:Restriction>
+  </rdfs:subClassOf>
+  <rdfs:comment>Robot used in autonomous missions.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Equipment"/>
+
+<owl:Class rdf:about="#Waypoint">
+  <rdfs:comment>Entity used for representing locations.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Valve">
+  <rdfs:comment>An objective type in underwater missions.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#CADClassification">
+  <rdfs:subClassOf rdf:resource="#RobotSensor"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Camera">
+  <rdfs:subClassOf rdf:resource="#RobotSensor"/>
+</owl:Class>
+
+<owl:Class rdf:about="#RockSensor">
+  <rdfs:subClassOf rdf:resource="#RobotSensor"/>
+</owl:Class>
+
+<owl:Class rdf:about="#SoilSensor">
+  <rdfs:subClassOf rdf:resource="#RobotSensor"/>
+</owl:Class>
+
+<owl:Class rdf:about="#Sonar">
+  <rdfs:subClassOf rdf:resource="#RobotSensor"/>
+</owl:Class>
+
+<owl:Class rdf:about="#RobotActuator">
+  <rdfs:subClassOf rdf:resource="#Equipment"/>
+  <rdfs:comment>Actuator that a robot uses for manipulation.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#RobotSensor">
+  <rdfs:subClassOf rdf:resource="#Equipment"/>
+  <rdfs:comment>Sensor that a robot uses to perceive its current state and its environment</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#CorrectPositionRobot">
+  <rdfs:subClassOf rdf:resource="#Robot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Robot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#isNearTo"/>
+          <owl:onClass rdf:resource="#Waypoint"/>
+          <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#available"/>
+          <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#ImageRobot">
+  <rdfs:subClassOf rdf:resource="#Robot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Robot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#isEquippedForCameraImagingWith"/>
+          <owl:someValuesFrom rdf:resource="#Camera"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#isLocatedAt"/>
+          <owl:onClass rdf:resource="#Waypoint"/>
+          <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#energy"/>
+          <owl:someValuesFrom>
+            <rdfs:Datatype>
+              <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+              <owl:withRestrictions>
+                <rdf:Description>
+                  <rdf:first>
+                    <rdf:Description>
+                      <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</xsd:minInclusive>
+                    </rdf:Description>
+                  </rdf:first>
+                  <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                </rdf:Description>
+              </owl:withRestrictions>
+            </rdfs:Datatype>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#available"/>
+          <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#ManipulationRobot">
+  <rdfs:subClassOf rdf:resource="#Robot"/>
+  <owl:equivalentClass rdf:resource="#StructureMaintenanceRobot"/>
+</owl:Class>
+
+<owl:Class rdf:about="#StructureMaintenanceRobot">
+  <rdfs:subClassOf rdf:resource="#Robot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Robot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#isEquippedForValveTurningWith"/>
+          <owl:someValuesFrom rdf:resource="#RobotActuator"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#approachesTargetAt"/>
+          <owl:onClass rdf:resource="#Waypoint"/>
+          <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#isLocatedAt"/>
+          <owl:onClass rdf:resource="#Waypoint"/>
+          <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#available"/>
+          <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#NavigationRobot">
+  <rdfs:subClassOf rdf:resource="#Robot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Robot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#isLocatedAt"/>
+          <owl:onClass rdf:resource="#Waypoint"/>
+          <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#available"/>
+          <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#RobustStructureInspectionRobot">
+  <rdfs:subClassOf rdf:resource="#Robot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Robot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#isLocatedAt"/>
+          <owl:onClass rdf:resource="#Waypoint"/>
+          <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#available"/>
+          <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#RockInspectionRobot">
+  <rdfs:subClassOf rdf:resource="#Robot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Robot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#isEquippedForRockAnalysisWith"/>
+          <owl:someValuesFrom rdf:resource="#RockSensor"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#isLocatedAt"/>
+          <owl:onClass rdf:resource="#Waypoint"/>
+          <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#energy"/>
+          <owl:someValuesFrom>
+            <rdfs:Datatype>
+              <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+              <owl:withRestrictions>
+                <rdf:Description>
+                  <rdf:first>
+                    <rdf:Description>
+                      <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</xsd:minInclusive>
+                    </rdf:Description>
+                  </rdf:first>
+                  <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                </rdf:Description>
+              </owl:withRestrictions>
+            </rdfs:Datatype>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#available"/>
+          <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#SenseValveRobot">
+  <rdfs:subClassOf rdf:resource="#Robot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Robot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#approachesTargetAt"/>
+          <owl:someValuesFrom rdf:resource="#Waypoint"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#isEquippedForCADClassificationWith"/>
+          <owl:someValuesFrom rdf:resource="#CADClassification"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#isLocatedAt"/>
+          <owl:onClass rdf:resource="#Waypoint"/>
+          <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#energy"/>
+          <owl:someValuesFrom>
+            <rdfs:Datatype>
+              <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+              <owl:withRestrictions>
+                <rdf:Description>
+                  <rdf:first>
+                    <rdf:Description>
+                      <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</xsd:minInclusive>
+                    </rdf:Description>
+                  </rdf:first>
+                  <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                </rdf:Description>
+              </owl:withRestrictions>
+            </rdfs:Datatype>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#available"/>
+          <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#SoilInspectionRobot">
+  <rdfs:subClassOf rdf:resource="#Robot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Robot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#isEquippedForSoilAnalysisWith"/>
+          <owl:someValuesFrom rdf:resource="#SoilSensor"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#isLocatedAt"/>
+          <owl:onClass rdf:resource="#Waypoint"/>
+          <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#energy"/>
+          <owl:someValuesFrom>
+            <rdfs:Datatype>
+              <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+              <owl:withRestrictions>
+                <rdf:Description>
+                  <rdf:first>
+                    <rdf:Description>
+                      <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</xsd:minInclusive>
+                    </rdf:Description>
+                  </rdf:first>
+                  <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                </rdf:Description>
+              </owl:withRestrictions>
+            </rdfs:Datatype>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#available"/>
+          <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#StructureIdRobot">
+  <rdfs:subClassOf rdf:resource="#Robot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Robot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#isEquippedForSonarImagingWith"/>
+          <owl:someValuesFrom rdf:resource="#Sonar"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#isLocatedAt"/>
+          <owl:onClass rdf:resource="#Waypoint"/>
+          <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#energy"/>
+          <owl:someValuesFrom>
+            <rdfs:Datatype>
+              <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+              <owl:withRestrictions>
+                <rdf:Description>
+                  <rdf:first>
+                    <rdf:Description>
+                      <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</xsd:minInclusive>
+                    </rdf:Description>
+                  </rdf:first>
+                  <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                </rdf:Description>
+              </owl:withRestrictions>
+            </rdfs:Datatype>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#available"/>
+          <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#StructureInspectionRobot">
+  <rdfs:subClassOf rdf:resource="#Robot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Robot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#isLocatedAt"/>
+          <owl:onClass rdf:resource="#Waypoint"/>
+          <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#available"/>
+          <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#TargetApproachRobot">
+  <rdfs:subClassOf rdf:resource="#Robot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Robot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#isLocatedAt"/>
+          <owl:onClass rdf:resource="#Waypoint"/>
+          <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#energy"/>
+          <owl:someValuesFrom>
+            <rdfs:Datatype>
+              <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+              <owl:withRestrictions>
+                <rdf:Description>
+                  <rdf:first>
+                    <rdf:Description>
+                      <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</xsd:minInclusive>
+                    </rdf:Description>
+                  </rdf:first>
+                  <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                </rdf:Description>
+              </owl:withRestrictions>
+            </rdfs:Datatype>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#available"/>
+          <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<owl:Class rdf:about="#Turbine">
+  <rdfs:comment>An objective type in underwater missions.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#TurnValveRobot">
+  <rdfs:subClassOf rdf:resource="#Robot"/>
+  <owl:equivalentClass>
+    <owl:Class>
+      <owl:intersectionOf rdf:parseType="Collection">
+        <rdf:Description rdf:about="#Robot"/>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#isEquippedForValveTurningWith"/>
+          <owl:someValuesFrom rdf:resource="#RobotActuator"/>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#isLocatedAt"/>
+          <owl:onClass rdf:resource="#Waypoint"/>
+          <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#energy"/>
+          <owl:someValuesFrom>
+            <rdfs:Datatype>
+              <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+              <owl:withRestrictions>
+                <rdf:Description>
+                  <rdf:first>
+                    <rdf:Description>
+                      <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</xsd:minInclusive>
+                    </rdf:Description>
+                  </rdf:first>
+                  <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                </rdf:Description>
+              </owl:withRestrictions>
+            </rdfs:Datatype>
+          </owl:someValuesFrom>
+        </owl:Restriction>
+        <owl:Restriction>
+          <owl:onProperty rdf:resource="#available"/>
+          <owl:hasValue rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</owl:hasValue>
+        </owl:Restriction>
+      </owl:intersectionOf>
+    </owl:Class>
+  </owl:equivalentClass>
+</owl:Class>
+
+<Camera rdf:about="#camera">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</Camera>
+
+<Robot rdf:about="#robot1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <approachesTargetAt rdf:resource="#wp2"/>
+  <isEquippedForCameraImagingWith rdf:resource="#camera"/>
+  <isEquippedForRockAnalysisWith rdf:resource="#rock_sensor"/>
+  <available rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">false</available>
+  <data_adquired rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">0</data_adquired>
+  <data_capacity rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">15</data_capacity>
+  <energy rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5000000</energy>
+  <speed rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">50</speed>
+</Robot>
+
+<Waypoint rdf:about="#wp2">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDistanceFrom rdf:resource="#wp3"/>
+  <explored rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</explored>
+</Waypoint>
+
+<RockSensor rdf:about="#rock_sensor">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+</RockSensor>
+
+<Waypoint rdf:about="#wp3">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDistanceFrom rdf:resource="#wp4"/>
+  <explored rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</explored>
+  <poi_rock_analysis rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</poi_rock_analysis>
+</Waypoint>
+
+<Waypoint rdf:about="#wp1">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <hasDistanceFrom rdf:resource="#wp2"/>
+</Waypoint>
+
+<Waypoint rdf:about="#wp4">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#NamedIndividual"/>
+  <explored rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</explored>
+  <poi_image_taken rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</poi_image_taken>
+</Waypoint>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#CADClassification"/>
+    <rdf:Description rdf:about="#Camera"/>
+    <rdf:Description rdf:about="#RockSensor"/>
+    <rdf:Description rdf:about="#SoilSensor"/>
+    <rdf:Description rdf:about="#Sonar"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+<owl:AllDisjointClasses>
+  <owl:members rdf:parseType="Collection">
+    <rdf:Description rdf:about="#Robot"/>
+    <rdf:Description rdf:about="#RobotActuator"/>
+    <rdf:Description rdf:about="#RobotSensor"/>
+    <rdf:Description rdf:about="#Turbine"/>
+    <rdf:Description rdf:about="#Valve"/>
+    <rdf:Description rdf:about="#Waypoint"/>
+  </owl:members>
+</owl:AllDisjointClasses>
+
+
+</rdf:RDF>
